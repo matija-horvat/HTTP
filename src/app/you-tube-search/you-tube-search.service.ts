@@ -27,7 +27,9 @@ export class YouTubeSearchService {
       `type=video`,
       `maxResults=10`
     ].join('&');
-    const queryUrl = `${this.apiUrl}${params}`;
+    const queryUrl = `${YOUTUBE_API_URL}?${params}`;
+    //const queryUrl = `${this.apiUrl}?${params}`; //this.apiUrl iz nekog razloga ne radi, onda idem direktno preko YOUTUBE_API_URL i radi
+    
 
     return this.http.get(queryUrl).pipe(map(response =>{
       return <any>response['items'].map(item => {
